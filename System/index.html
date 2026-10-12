@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RH Manager - Dashboard</title>
     <style>
+        /* RESET E CONFIGURAÇÕES GERAIS */
         * {
             margin: 0;
             padding: 0;
@@ -14,18 +15,20 @@
 
         :root {
             --sidebar-width: 260px;
-            --sidebar-bg: #0f172a;
-            --sidebar-hover: #1e293b;
-            --sidebar-active: #2563eb;
-            --bg-main: #f8fafc;
+            --sidebar-bg: #0f172a; /* Slate 900 */
+            --sidebar-hover: #1e293b; /* Slate 800 */
+            --sidebar-active: #2563eb; /* Blue 600 */
+            --bg-main: #f8fafc; /* Slate 50 */
             --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --status-active-bg: #dcfce7;
-            --status-active-txt: #15803d;
-            --status-inactive-bg: #fee2e2;
-            --status-inactive-txt: #b91c1c;
+            --text-main: #0f172a; /* Slate 900 */
+            --text-muted: #64748b; /* Slate 500 */
+            --border-color: #e2e8f0; /* Slate 200 */
+            
+            /* Cores dos Status */
+            --status-active-bg: #dcfce7; /* Verde claro */
+            --status-active-txt: #15803d; /* Verde escuro */
+            --status-inactive-bg: #fee2e2; /* Vermelho claro */
+            --status-inactive-txt: #b91c1c; /* Vermelho escuro */
         }
 
         body {
@@ -35,6 +38,7 @@
             min-height: 100vh;
         }
 
+        /* REQUISITOS DE SPA (CLASSES DE EXIBIÇÃO) */
         .hidden {
             display: none !important;
         }
@@ -47,7 +51,7 @@
             display: block;
         }
 
-        /* ==================== SIDEBAR ==================== */
+        /* SIDEBAR (MENU LATERAL FIXO) */
         .sidebar {
             width: var(--sidebar-width);
             background-color: var(--sidebar-bg);
@@ -87,7 +91,7 @@
             display: flex;
             align-items: center;
             padding: 12px 16px;
-            color: #94a3b8;
+            color: #94a3b8; /* Slate 400 */
             text-decoration: none;
             border-radius: 8px;
             font-weight: 500;
@@ -100,11 +104,13 @@
             color: #ffffff;
         }
 
+        /* Classe de indicação do menu selecionado (Simulação visual da SPA) */
         .menu-item.active {
             background-color: var(--sidebar-active);
             color: #ffffff;
         }
 
+        /* Ícones em CSS puro (SVG inline) */
         .menu-icon {
             width: 20px;
             height: 20px;
@@ -119,7 +125,7 @@
             color: #64748b;
         }
 
-        /* ==================== MAIN CONTENT ==================== */
+        /* ÁREA DE CONTEÚDO PRINCIPAL */
         .main-content {
             margin-left: var(--sidebar-width);
             padding: 40px;
@@ -127,6 +133,7 @@
             min-height: 100vh;
         }
 
+        /* Cabeçalho da Seção */
         .page-header {
             margin-bottom: 32px;
         }
@@ -143,7 +150,7 @@
             margin-top: 4px;
         }
 
-        /* ==================== DASHBOARD STATS ==================== */
+        /* ==================== DASHBOARD SECTION ==================== */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -177,6 +184,7 @@
             color: var(--text-main);
         }
 
+        /* Decorador visual dos cards */
         .card-stat-icon-wrapper {
             width: 48px;
             height: 48px;
@@ -191,7 +199,7 @@
         .icon-red { background-color: #fef2f2; color: #dc2626; }
         .icon-purple { background-color: #faf5ff; color: #9333ea; }
 
-        /* ==================== TABLES ==================== */
+        /* ==================== FUNCIONÁRIOS SECTION ==================== */
         .table-container {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -238,11 +246,12 @@
             background-color: #f8fafc;
         }
 
+        /* Avatar de iniciais para a tabela */
         .avatar-initials {
             width: 36px;
             height: 36px;
             background-color: #e2e8f0;
-            color: #2563eb;
+            color: var(--primary-color);
             font-weight: 600;
             font-size: 14px;
             border-radius: 50%;
@@ -262,6 +271,7 @@
             color: var(--text-main);
         }
 
+        /* Badges de Status */
         .badge {
             display: inline-block;
             padding: 6px 12px;
@@ -281,7 +291,7 @@
             color: var(--status-inactive-txt);
         }
 
-        /* ==================== FORMS ==================== */
+        /* ==================== CADASTRO SECTION ==================== */
         .form-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -289,7 +299,6 @@
             padding: 32px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             max-width: 800px;
-            margin-bottom: 40px;
         }
 
         .form-grid {
@@ -312,7 +321,7 @@
         .field-label {
             font-size: 14px;
             font-weight: 600;
-            color: #2563eb;
+            color: var(--primary-color);
         }
 
         .field-input, .field-select {
@@ -327,7 +336,7 @@
         }
 
         .field-input:focus, .field-select:focus {
-            border-color: #2563eb;
+            border-color: var(--accent-color);
             box-shadow: 0 0 0 3px rgba(37, 99, 211, 0.15);
         }
 
@@ -336,7 +345,7 @@
             align-items: center;
             justify-content: center;
             padding: 14px 28px;
-            background-color: #2563eb;
+            background-color: var(--accent-color);
             color: #080808;
             border: none;
             border-radius: 8px;
@@ -347,10 +356,10 @@
         }
 
         .btn-action:hover {
-            background-color: #1d4ed8;
+            background-color: var(--accent-hover);
         }
 
-        /* ==================== PROFILE ==================== */
+        /* ==================== MY ACCOUNT SECTION ==================== */
         .profile-container {
             display: flex;
             gap: 32px;
@@ -370,12 +379,13 @@
             align-items: center;
         }
 
+        /* Avatar Circular do CEO */
         .profile-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             background-color: #cbd5e1;
-            color: #2563eb;
+            color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -395,7 +405,7 @@
 
         .profile-title {
             font-size: 14px;
-            color: #2563eb;
+            color: var(--accent-color);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -428,7 +438,7 @@
             font-weight: 600;
         }
 
-        /* ==================== RESPONSIVENESS ==================== */
+        /* RESPONSIVIDADE COMPACTA */
         @media (max-width: 1024px) {
             .sidebar {
                 width: 70px;
@@ -477,6 +487,7 @@
 </head>
 <body>
 
+    <!-- SIDEBAR / MENU LATERAL FIXO -->
     <aside class="sidebar">
         <div class="sidebar-brand">
             RH<span>Manager</span>
@@ -484,6 +495,7 @@
         
         <ul class="sidebar-menu">
             <li>
+                <!-- Link simulado que receberia class="active" na SPA -->
                 <a href="javascript:void(0)" class="menu-item active" id="dashboard">
                     <svg class="menu-icon" viewBox="0 0 24 24">
                         <path d="M19,5V19H5V5H19M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M9,17H7V10H9V17M13,17H11V7H13V17M17,17H15V12H17V17Z" />
@@ -496,7 +508,7 @@
                     <svg class="menu-icon" viewBox="0 0 24 24">
                         <path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" />
                     </svg>
-                    <span class="menu-text">Funcionários</span>
+                    <span class="menu-text" id="Funcionários">Funcionários</span>
                 </a>
             </li>
             <li>
@@ -509,6 +521,7 @@
             </li>
             <li>
                 <a class="menu-item" href="javascript:void(0)" id="MyAccount">
+                    <!-- javascript:void(0) impede a ancora de redirecionar para algum lugar -->
                     <svg class="menu-icon" viewBox="0 0 24 24">
                         <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
                     </svg>
@@ -516,11 +529,12 @@
                 </a>
             </li>
             <li style="margin-top: auto;">
-                <a href="login.html" class="menu-item" style="color: #ef4444;">
+                <!-- Retorna à tela de login simulada -->
+                <a href="javascript:void(0)" class="menu-item" style="color: #ef4444;" id="exit">
                     <svg class="menu-icon" viewBox="0 0 24 24">
                         <path d="M14.08,15.59L16.67,13H7V11H16.67L14.08,8.41L15.5,7L20.5,12L15.5,17L14.08,15.59M19,3A2,2 0 0,1 21,5V9.67L19,7.67V5H5V19H19V16.33L21,14.33V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19Z" />
                     </svg>
-                    <span class="menu-text">Sair</span>
+                    <button class="menu-text">Sair</button>
                 </a>
             </li>
         </ul>
@@ -530,20 +544,27 @@
         </div>
     </aside>
 
+    <!-- ÁREA DE CONTEÚDO PRINCIPAL -->
     <main class="main-content">
 
-        <!-- DASHBOARD SECTION -->
+        <!-- ==================== 1. SEÇÃO DASHBOARD (PÁGINA INICIAL ATIVA) ==================== -->
         <section class="page active" id="secao0">
             <header class="page-header">
                 <h2>Dashboard</h2>
                 <p>Estatísticas gerais dos colaboradores da empresa.</p>
             </header>
 
-            <div class="stats-grid" id="stats-container">
+            <!-- Cards de Estatísticas -->
+            <div class="stats-grid">
+                <div class="card-stat">
+                    
+                </div>
+                
+               
             </div>
         </section>
 
-        <!-- EMPLOYEES SECTION -->
+        <!-- ==================== 2. SEÇÃO FUNCIONÁRIOS (OCULTA INICIALMENTE) ==================== -->
         <section class="page hidden" id="secao2">
             <header class="page-header">
                 <h2>Funcionários</h2>
@@ -560,22 +581,23 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody id="employee-cadaster">
+                        <tbody id="funcionarios-exibir">
+                        <!-- exibir funcionarios cadastrados -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
-        <!-- REGISTRATION SECTION -->
-        <section class="page hidden" id="secao3">
+        <!-- ==================== 3. SEÇÃO CADASTRO (OCULTA INICIALMENTE) ==================== -->
+<section class="page hidden" id="secao3">
             <header class="page-header">
                 <h2>Cadastro</h2>
                 <p>Insira as informações do novo colaborador para registro.</p>
             </header>
 
             <div class="form-card">
-                <form id="employee-form">
+                <form>
                     <div class="form-grid">
                         <div class="field-group form-grid-full">
                             <label for="nome" class="field-label">Nome Completo</label>
@@ -601,10 +623,11 @@
                         </div>
                     </div>
 
-                    <button class="btn-action" id="btn-register-employee" type="button">Cadastrar Funcionário</button>
+                    <button class="btn-action cadastrar-funcionarios" type="button">Cadastrar Funcionário</button>
                 </form>
             </div>
 
+           
             <div class="table-container">
                 <div class="table-responsive">
                     <table class="employee-table">
@@ -615,14 +638,14 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody id="employees-list">
+                        <tbody class="linha">
                         </tbody>
                     </table>
                 </div>
             </div>
+                            
         </section>
-
-        <!-- MY ACCOUNT SECTION -->
+        <!-- ==================== 4. SEÇÃO MY ACCOUNT (OCULTA INICIALMENTE) ==================== -->
         <section class="page hidden" id="secao1">
             <header class="page-header">
                 <h2>My Account</h2>
@@ -630,16 +653,239 @@
             </header>
 
             <div class="profile-container">
-                <div class="profile-card">
-                    <div class="profile-avatar">SA</div>
-                    <h3 class="profile-name">Saulo Almeida</h3>
+            </div>
+        </section>
+
+    </main>
+
+<script>
+
+// Menu de Navegação(buttons)
+    let btncadastro = document.getElementById("Cadastro")
+    let btnfuncionarios = document.getElementById("funcionários")
+    let btnperfil = document.getElementById("MyAccount")
+    let btninicial = document.getElementById("dashboard")
+    let btnsair = document.getElementById("exit")
+
+// Telas 
+    let secadastro = document.getElementById("secao3")
+    let secfuncionarios = document.getElementById("secao2")
+    let secperfil = document.getElementById("secao1")
+    let secdash = document.getElementById("secao0")
+
+// Telas alt
+   const containertable = document.querySelector(".linha")
+   const containerdashboard = document.querySelector(".stats-grid")
+   const funcionarios = document.getElementById("funcionarios-exibir")
+   const profile = document.querySelector(".profile-container")
+
+    function mostrarpagina(secao) {
+        document.querySelectorAll(".page").forEach(p => {
+        p.classList.add("hidden")
+        p.classList.remove("active")
+        })
+
+        secao.classList.remove("hidden")
+        secao.classList.add("active")
+    }
+
+    btncadastro.addEventListener('click', () => mostrarpagina(secadastro))
+      
+    btninicial.addEventListener('click', () => mostrarpagina(secdash))
+    
+    btnperfil.addEventListener('click', () => mostrarpagina(secperfil))
+      
+    btnfuncionarios.addEventListener('click', () => mostrarpagina(secfuncionarios))
+
+    btnsair.addEventListener('click', () => logout())
+    //   aqui criamos uma função que chama a função mostrar pagina
+    //   neste linha ele pega o botão cadastro e adiciona nele um evento que se o user clicar uma função vai ser execuata 
+    // dentro desta function com querySelectorall ele pega todos os elementos com a class page 
+    // colocamos as pages dentro de p e ele fica rodando todos os p(pages) usando forEach 
+    // ele pega todas as pages, add a classe hiden e remove a classe active 
+
+    let btncaduser = document.querySelector(".cadastrar-funcionarios");
+   
+     const indice = localStorage.getItem("ind")
+
+btncaduser.addEventListener("click", function () {
+
+     const users = JSON.parse(localStorage.getItem("users") || "[]")
+
+    const name = document.getElementById("nome").value.trim();
+    const cargo = document.getElementById("cargo").value.trim();
+    const cell = document.getElementById("telefone").value.trim();
+    const status = document.getElementById("status").value;
+
+    if (!name || !cargo ) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+    // ! faz tipo uma pergunta aliás ele não é literalmente false na verdade ele é falsy 
+    // um campo vazio ou um undefined ou um NaN ou zero é true 
+    // ex..: nome esta vazio? se sim true se não false
+
+  users[indice].funcionarios.push({
+        nome: name,
+        cargo: cargo ,
+        telefone: cell,
+        status: status
+    });
+
+   console.log(users[indice].funcionarios[indice])
+   localStorage.setItem("users", JSON.stringify(users))
+    dashlog()
+    exibir()
+    cadastrarlista() 
+// neste caso estamos chamando as funções para serem executadas após as mudanças dentro do array!
+
+// Sempre que um novo user é adicionado ele faz trés ações 
+// 1. atualiza a lista de funcionarios cadastrado
+// 2. atualiza a quantidade de users adicionados
+// 3. atualiza as quantidades no dashboard
+
+    document.getElementById("nome").value = "";
+    document.getElementById("cargo").value = "";
+    document.getElementById("telefone").value = "";
+    document.getElementById("status").value = "ativo";
+
+   });
+
+   function cadastrarlista() {
+     const users = JSON.parse(localStorage.getItem("users") || "[]")
+
+     containertable.innerHTML = ""
+     users[indice].funcionarios.forEach(funcionario => {
+        // para que uma informação não sobreponha a outra limpeza antes de rederizar
+        containertable.innerHTML += `
+              <tr>
+                                 <td>
+                                    <div class="employee-profile">
+                                        <span class="employee-name">${funcionario.nome}</span>
+                                    </div>
+                                </td>
+                                <td>${funcionario.cargo}</td>
+                                <td><span class="badge badge-active">${funcionario.status}</span></td>
+                            </tr>`
+                            
+})
+   }
+
+   function exibir() {
+     const users = JSON.parse(localStorage.getItem("users") || "[]")
+    //  JSON.parse = sempre vai receber uma string ele espera receber para converter novamente em array e ao enviar um array isso não bate e pode quebrar
+
+    funcionarios.innerHTML = ""
+
+    users[indice].funcionarios.forEach(f => {
+        funcionarios.innerHTML += `
+                            <tr>
+                                <td>
+                                    <div class="employee-profile">
+                                        <span class="employee-name">${f.nome}</span>
+                                    </div>
+                                </td>
+                                <td>${f.cargo}</td>
+                                <td><span class="badge badge-active">${f.status}</span></td>
+                            </tr>
+        `
+    })
+   }
+
+function dashlog() {
+     const users = JSON.parse(localStorage.getItem("users") || "[]")
+    
+
+// filter sempre retorna um objeto inteiro 
+// filter().length retorna quantidade de itens presentes no array
+const total =  users[indice].funcionarios.length
+const inativo = users[indice].funcionarios.filter(f => f.status == "inativo").length
+const ativos = users[indice].funcionarios.filter(f => f.status == "ativo").length
+
+    containerdashboard.innerHTML = ""
+    // analise de erros 
+
+    // 1. o forEach executa uma função para cada funcionario
+    // 2. += apenas escreve sem apagar dados anteriores 
+    // 3. o correto é utilizar as variaveis de calculos dentro das funções para que assim toda vez que o codigo for executado os valores
+    // sejam recalculados 
+    // 4. o container somente recebe as atualizações
+
+        containerdashboard.innerHTML = `
+         <div class="card-stat">
+                    <div class="card-stat-info">
+                        <h3>Total de Funcionários</h3>
+                        <div class="stat-number">${total}</div>
+                    </div>
+                    <div class="card-stat-icon-wrapper icon-blue">
+                        <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
+                            <path d="M16 17V19H2V17C2 14.78 5.58 13 10 13C14.42 13 18 14.78 18 17M10 11C12.21 11 14 9.21 14 7C14 4.79 12.21 3 10 3C7.79 3 6 4.79 6 7C6 9.21 7.79 11 10 11M22 17V19H20V17C20 15.42 18.3 14.16 15.86 13.43C17.15 14.34 18 15.56 18 17M16 11C18.21 11 20 9.21 20 7C20 5.86 19.5 4.84 18.73 4.14C19.5 5 20 6.09 20 7.3C20 8.5 19.5 9.6 18.73 10.4C19.5 9.7 20 8.56 20 7.3V7C22 7 22 11 22 11Z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Funcionários Ativos -->
+                <div class="card-stat">
+                    <div class="card-stat-info">
+                        <h3>Ativos</h3>
+                        <div class="stat-number">${ativos}</div>
+                    </div>
+                    <div class="card-stat-icon-wrapper icon-green">
+                        <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8L10,17Z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Funcionários Inativos -->
+                <div class="card-stat">
+                    <div class="card-stat-info">
+                        <h3>Inativos</h3>
+                        <div class="stat-number">${inativo}</div>
+                    </div>
+                    <div class="card-stat-icon-wrapper icon-red">
+                        <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Novos Funcionários -->
+                <div class="card-stat">
+                    <div class="card-stat-info">
+                        <h3>Novos (Mês)</h3>
+                        <div class="stat-number">00</div>
+                    </div>
+                    <div class="card-stat-icon-wrapper icon-purple">
+                        <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
+                            <path d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" />
+                        </svg>
+                    </div>
+                </div>`
+    }
+
+    function myperfil() {
+
+        const users = JSON.parse(localStorage.getItem("users") || "[]")
+        let icon = users[indice].nome
+        let icons = icon.slice(0, 2).toUpperCase()
+        // splice serve apena para arrays/
+        // slice pega as duas primeiras caracteres da string e as deixa maiusculas
+
+        profile.innerHTML = ""
+
+        profile.innerHTML = `
+         <div class="profile-card">
+                    <!-- Avatar Circular do CEO com iniciais -->
+                    <div class="profile-avatar">${icons}</div>
+                    <h3 class="profile-name">${users[indice].nome}</h3>
                     <p class="profile-title">CEO / Administrador</p>
                     
-                    <div class="profile-details-list">
+                    <div class="profile-details-list">S
                         <div class="profile-detail-item">
                             <span class="detail-label">E-mail corporativo:</span>
-                            <span class="detail-value">saulo.almeida@rhmanager.com</span>
-                        </div>
+                            <span class="detail-value">${users[indice].email}</span>
+                        </div>S
                         <div class="profile-detail-item">
                             <span class="detail-label">Empresa vinculada:</span>
                             <span class="detail-value">RH Manager Inc.</span>
@@ -654,186 +900,30 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+`
+    }
 
-    </main>
+    function logout() {
 
-    <script>
-        // ==================== DOM SELECTORS ====================
-        const navDashboard = document.getElementById("dashboard");
-        const navEmployees = document.getElementById("funcionários");
-        const navRegistration = document.getElementById("Cadastro");
-        const navProfile = document.getElementById("MyAccount");
-
-        const pageDashboard = document.getElementById("secao0");
-        const pageEmployees = document.getElementById("secao2");
-        const pageRegistration = document.getElementById("secao3");
-        const pageProfile = document.getElementById("secao1");
-
-        const statsContainer = document.getElementById("stats-container");
-        const employeesList = document.getElementById("employees-list");
-        const btnRegisterEmployee = document.getElementById("btn-register-employee");
-        const employeeForm = document.getElementById("employee-form");
-        const employeeListcadaster = document.getElementById("employee-cadaster");
-
-        // ==================== STATE MANAGEMENT ====================
-        const employees = [];
-
-        // ==================== NAVIGATION ====================
-        function showPage(page) {
-            document.querySelectorAll(".page").forEach(p => {
-                p.classList.add("hidden");
-                p.classList.remove("active");
-            });
-            page.classList.remove("hidden");
-            page.classList.add("active");
-        }
-
-        navDashboard.addEventListener("click", () => showPage(pageDashboard));
-        navEmployees.addEventListener("click", () => showPage(pageEmployees));
-        navRegistration.addEventListener("click", () => showPage(pageRegistration));
-        navProfile.addEventListener("click", () => showPage(pageProfile));
-
-        // ==================== EMPLOYEE REGISTRATION ====================
-        function isFormValid() {
-            const name = document.getElementById("nome").value.trim();
-            const position = document.getElementById("cargo").value.trim();
-            
-            return name && position;
-        }
-
-        function getFormData() {
-            return {
-                nome: document.getElementById("nome").value.trim(),
-                cargo: document.getElementById("cargo").value.trim(),
-                telefone: document.getElementById("telefone").value.trim(),
-                status: document.getElementById("status").value
-            };
-        }
-
-        function clearForm() {
-            employeeForm.reset();
-        }
-
-        function registerEmployee() {
-            if (!isFormValid()) {
-                alert("Preencha todos os campos obrigatórios!");
-                return;
-            }
-
-            employees.push(getFormData());
-            clearForm();
-            updateEmployeesDisplay();
-            updateDashboard();
-            cadaster();
-        }
-
-        btnRegisterEmployee.addEventListener("click", registerEmployee);
-
-        // ==================== DISPLAY UPDATES ====================
-        function updateEmployeesDisplay() {
-            employeesList.innerHTML = "";
-            employees.forEach(employee => {
-                employeesList.innerHTML += `
-                    <tr>
-                        <td>
-                            <div class="employee-profile">
-                                <span class="employee-name">${employee.nome}</span>
-                            </div>
-                        </td>
-                        <td>${employee.cargo}</td>
-                        <td><span class="badge badge-active">${employee.status}</span></td>
-                    </tr>
-                `;
-            });
-        }
-
-        function calculateStats() {
-            return {
-                total: employees.length,
-                active: employees.filter(e => e.status === "ativo").length,
-                inactive: employees.filter(e => e.status === "inativo").length
-            };
-        }
-
-        function updateDashboard() {
-            const stats = calculateStats();
-            statsContainer.innerHTML = `
-                <div class="card-stat">
-                    <div class="card-stat-info">
-                        <h3>Total de Funcionários</h3>
-                        <div class="stat-number">${stats.total}</div>
-                    </div>
-                    <div class="card-stat-icon-wrapper icon-blue">
-                        <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
-                            <path d="M16 17V19H2V17C2 14.78 5.58 13 10 13C14.42 13 18 14.78 18 17M10 11C12.21 11 14 9.21 14 7C14 4.79 12.21 3 10 3C7.79 3 6 4.79 6 7C6 9.21 7.79 11 10 11M22 17V19H20V17C20 15.42 18.3 14.16 15.86 13.43C17.15 14.34 18 15.56 18 17M16 11C18.21 11 20 9.21 20 7C20 5.86 19.5 4.84 18.73 4.14C19.5 5 20 6.09 20 7.3C20 8.5 19.5 9.6 18.73 10.4C19.5 9.7 20 8.56 20 7.3V7C22 7 22 11 22 11Z"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="card-stat">
-                    <div class="card-stat-info">
-                        <h3>Ativos</h3>
-                        <div class="stat-number">${stats.active}</div>
-                    </div>
-                    <div class="card-stat-icon-wrapper icon-green">
-                        <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
-                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8L10,17Z" />
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="card-stat">
-                    <div class="card-stat-info">
-                        <h3>Inativos</h3>
-                        <div class="stat-number">${stats.inactive}</div>
-                    </div>
-                    <div class="card-stat-icon-wrapper icon-red">
-                        <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
-                            <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="card-stat">
-                    <div class="card-stat-info">
-                        <h3>Novos (Mês)</h3>
-                        <div class="stat-number">00</div>
-                    </div>
-                    <div class="card-stat-icon-wrapper icon-purple">
-                        <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24">
-                            <path d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" />
-                        </svg>
-                    </div>
-                </div>
-            `;
-        }
-
-        function cadaster() { 
-           employees.forEach(employee => {
-            employeeListcadaster.innerHTML += `
-            
-                            <tr>
-                                <td>
-                                    <div class="employee-profile">
-                                        <span class="employee-name">${employee.nome}</span>
-                                    </div>
-                                </td>
-                                <td>${employee.cargo}</td>
-                                <td><span class="badge badge-inactive">${employee.status}</span></td>
-                            </tr`
-               })
-        }
-
-        function lembrardados() {
             const users = JSON.parse(localStorage.getItem("users"))
+            const indice = localStorage.getItem("ind")
 
-            console.log(users)
+             users[indice].entrada = false
+                localStorage.setItem("users", JSON.stringify(users))
+                // quando alguma mudança é feita dentro do array salvamos ele coompleto não apenas a parte alterada 
+                console.log(users[indice].entrada)
+                window.location.href = "../login.html"
+
         }
-         lembrardados()
-        updateDashboard();
-    </script>
+
+
+exibir()
+cadastrarlista()
+dashlog()
+myperfil()
+
+    
+</script>
 
 </body>
 </html>
